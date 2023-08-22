@@ -1,34 +1,76 @@
-// hard code for now, later to be used as input
-let cellsPerRow = 5;
-let gridSize = cellsPerRow * cellsPerRow;
+// Initial data points variables, functions
+let gridSizeNum = 5;
+const cell = document.getElementsByClassName("cell");
+CreateGrid(gridSizeNum);
+FillCells();
 
-let gridSizeNum = cellsPerRow;
 
-// Create the grid of cells
-for (i = 1; i <= gridSizeNum; i++) {
-  for (j = 1; j <= gridSizeNum; j++) {
-    const cell = document.createElement('div');
-    cell.classList.add('cell');
-    document.getElementById('container').appendChild(cell);
-    let cellSize = 600 / gridSizeNum;
-    cell.style.height = `${cellSize}px`;
-    cell.style.width = `${cellSize}px`;
-  }
-}
-
-// Fill in the cells
-const test = document.getElementsByClassName("cell");
-for (let i = 0; i < test.length; i++) {
-  test[i].addEventListener("mouseover", function(e) {
-    e.target.style.background = "purple";
-  }) 
-}
+//
+// --------- Buttons --------- //
+//
 
 // Clear button functionality to reset the cells
 const clearButton = document.getElementById("clear-button");
 clearButton.addEventListener("click", function (e) {
   console.log("clear button clicked");
-  for (let i = 0; i < test.length; i++) {
-    test[i].style.background = "";
+  for (let i = 0; i < cell.length; i++) {
+    cell[i].style.background = "";
   }
 })
+
+// Grid size button
+const sizeButton = document.getElementById("size-button");
+sizeButton.addEventListener("click", function (e) {
+  console.log("size button clicked");
+  gridSizeNum = prompt("Enter number of cells per side: ");
+  console.log(gridSizeNum);
+  if (gridSizeNum > 100) {
+    while (gridSizeNum > 100) {
+      gridSizeNum = prompt("Max size is 100, enter a different size: ");
+      console.log(gridSizeNum);
+    }
+  }
+  // Check input, delete old grid, recreate new grid, engage drawing
+  if (gridSizeNum !== null)
+  {
+    DeleteGrid(5);
+    CreateGrid(gridSizeNum);
+    FillCells();
+  }
+})
+
+
+//
+// --------- Functions --------- //
+//
+
+// Function to create the grid
+function CreateGrid(size) {
+  for (i = 1; i <= size; i++) {
+    for (j = 1; j <= size; j++) {
+      const cell = document.createElement('div');
+      cell.classList.add('cell');
+      document.getElementById('container').appendChild(cell);
+      let cellSize = 600 / size;
+      cell.style.height = `${cellSize}px`;
+      cell.style.width = `${cellSize}px`;
+    }
+  }
+}
+
+// Function to delete the created grid
+function DeleteGrid(size) {
+  var element = document.getElementById("container");
+  while (element.firstChild) {
+    element.removeChild(element.firstChild);
+  }
+}
+
+// Function to fill in the cells
+function FillCells() {
+  for (let i = 0; i < cell.length; i++) {
+    cell[i].addEventListener("mouseover", function(e) {
+      e.target.style.background = "purple";
+    }) 
+  }
+}
