@@ -1,5 +1,5 @@
 // Initial data points variables, functions
-let gridSizeNum = 5;
+let gridSizeNum = 16;
 const cell = document.getElementsByClassName("cell");
 CreateGrid(gridSizeNum);
 FillCells();
@@ -31,8 +31,7 @@ sizeButton.addEventListener("click", function (e) {
     }
   }
   // Check input, delete old grid, recreate new grid, engage drawing
-  if (gridSizeNum !== null)
-  {
+  if (gridSizeNum !== null) {
     DeleteGrid(5);
     CreateGrid(gridSizeNum);
     FillCells();
@@ -51,7 +50,7 @@ function CreateGrid(size) {
       const cell = document.createElement('div');
       cell.classList.add('cell');
       document.getElementById('container').appendChild(cell);
-      let cellSize = 600 / size;
+      let cellSize = (600 / size) + 1;
       cell.style.height = `${cellSize}px`;
       cell.style.width = `${cellSize}px`;
     }
