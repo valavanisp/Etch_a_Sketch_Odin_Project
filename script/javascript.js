@@ -4,6 +4,7 @@ let gridSize = cellsPerRow * cellsPerRow;
 
 let gridSizeNum = cellsPerRow;
 
+// Create the grid of cells
 for (i = 1; i <= gridSizeNum; i++) {
   for (j = 1; j <= gridSizeNum; j++) {
     const cell = document.createElement('div');
@@ -15,14 +16,19 @@ for (i = 1; i <= gridSizeNum; i++) {
   }
 }
 
+// Fill in the cells
 const test = document.getElementsByClassName("cell");
-
-for (let i = 0; i < test.length; i++)
-{
+for (let i = 0; i < test.length; i++) {
   test[i].addEventListener("mouseover", function(e) {
     e.target.style.background = "purple";
-    setTimeout(() => {
-          e.target.style.background = "";
-        }, 500);
   }) 
 }
+
+// Clear button functionality to reset the cells
+const clearButton = document.getElementById("clear-button");
+clearButton.addEventListener("click", function (e) {
+  console.log("clear button clicked");
+  for (let i = 0; i < test.length; i++) {
+    test[i].style.background = "";
+  }
+})
