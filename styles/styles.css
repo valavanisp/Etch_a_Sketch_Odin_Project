@@ -9,7 +9,12 @@
     margin-left: 30%;
     display: flex;
     justify-content: space-evenly;
-    min-width: 400px;
+    /* min-width: 400px; */
+    min-width: 740px;
+    min-height: 740px;
+    max-width: 740px;
+    max-height: 740px;
+
     padding: 10px;
 }
 
@@ -22,11 +27,12 @@
 #container {
     display: flex;
     flex-wrap: wrap;
-    /* min-width: 200px; */
+    justify-content: space-evenly;
+    min-width: 640px;
+    min-height: 640px;
 }
 
 .cell {
-    width: 23%;
-    border: 2px solid black;
-    background: white;
+	background-color: #fff;
+	border: 1px solid black;
 }

@@ -1,36 +1,28 @@
-// // hard code for now, later to be used as input
-// let cellsPerRow = 4;
+// hard code for now, later to be used as input
+let cellsPerRow = 5;
+let gridSize = cellsPerRow * cellsPerRow;
 
+let gridSizeNum = cellsPerRow;
 
-for (let i = 0; i < 16; i++) {
-    let cell = document.createElement('div');
-    cell.className = "cell";
-    cell.textContent = i;
+for (i = 1; i <= gridSizeNum; i++) {
+  for (j = 1; j <= gridSizeNum; j++) {
+    const cell = document.createElement('div');
+    cell.classList.add('cell');
     document.getElementById('container').appendChild(cell);
+    let cellSize = 600 / gridSizeNum;
+    cell.style.height = `${cellSize}px`;
+    cell.style.width = `${cellSize}px`;
+  }
 }
 
-// const cell = document.getElementById("container");
+const test = document.getElementsByClassName("cell");
 
-// cell.addEventListener("mouseenter", (e) => {
-//     e.target.style.color = "purple";
-// });
-
-
-
-const test = document.getElementById("container");
-
-// This handler will be executed only once when the cursor
-// moves over the unordered list
-test.addEventListener(
-  "mouseover",
-  (event) => {
-    // highlight the mouseenter target
-    event.target.style.background = "purple";
-
-    // reset the color after a short delay
+for (let i = 0; i < test.length; i++)
+{
+  test[i].addEventListener("mouseover", function(e) {
+    e.target.style.background = "purple";
     setTimeout(() => {
-      event.target.style.background = "";
-    }, 500);
-  },
-  false,
-);
+          e.target.style.background = "";
+        }, 500);
+  }) 
+}
