@@ -1,5 +1,5 @@
 // Initial data points variables, functions
-let gridSizeNum = 5;
+let gridSizeNum = 16;
 const cells = document.getElementsByClassName("cell");
 CreateGrid(gridSizeNum);
 FillCells();
@@ -12,7 +12,6 @@ FillCells();
 // Clear button functionality to reset the cells
 const clearButton = document.getElementById("clear-button");
 clearButton.addEventListener("click", function (e) {
-  console.log("clear button clicked");
   for (let i = 0; i < cells.length; i++) {
     cells[i].style.background = "";
   }
@@ -21,13 +20,10 @@ clearButton.addEventListener("click", function (e) {
 // Grid size button
 const sizeButton = document.getElementById("size-button");
 sizeButton.addEventListener("click", function (e) {
-  console.log("size button clicked");
   gridSizeNum = prompt("Enter number of cells per side: ");
-  console.log(gridSizeNum);
   if (gridSizeNum > 100) {
     while (gridSizeNum > 100) {
       gridSizeNum = prompt("Max size is 100, enter a different size: ");
-      console.log(gridSizeNum);
     }
   }
   // Check input, delete old grid, recreate new grid, engage drawing
@@ -54,7 +50,6 @@ function CreateGrid(size) {
       cell.style.height = `${cellSize}px`;
       cell.style.width = `${cellSize}px`;
     }
-    console.log(cellSize);
   }
 }
 
