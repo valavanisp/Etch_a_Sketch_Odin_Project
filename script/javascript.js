@@ -45,15 +45,16 @@ sizeButton.addEventListener("click", function (e) {
 
 // Function to create the grid
 function CreateGrid(size) {
+  let cellSize = (1000 / size);
   for (i = 1; i <= size; i++) {
     for (j = 1; j <= size; j++) {
       const cell = document.createElement('div');
       cell.classList.add('cell');
       document.getElementById('container').appendChild(cell);
-      let cellSize = (600 / size) + 1;
       cell.style.height = `${cellSize}px`;
       cell.style.width = `${cellSize}px`;
     }
+    console.log(cellSize);
   }
 }
 
