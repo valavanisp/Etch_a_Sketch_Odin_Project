@@ -45,7 +45,7 @@ sizeButton.addEventListener("click", function (e) {
 
 // Function to create the grid
 function CreateGrid(size) {
-  let cellSize = (500 / size) - 2;
+  let cellSize = (500 / size) - 2;  // -2 because of the 1px border
   for (i = 1; i <= size; i++) {
     for (j = 1; j <= size; j++) {
       const cell = document.createElement('div');
