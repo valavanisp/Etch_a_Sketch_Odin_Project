@@ -1,6 +1,6 @@
 // Initial data points variables, functions
-let gridSizeNum = 16;
-const cell = document.getElementsByClassName("cell");
+let gridSizeNum = 5;
+const cells = document.getElementsByClassName("cell");
 CreateGrid(gridSizeNum);
 FillCells();
 
@@ -13,8 +13,8 @@ FillCells();
 const clearButton = document.getElementById("clear-button");
 clearButton.addEventListener("click", function (e) {
   console.log("clear button clicked");
-  for (let i = 0; i < cell.length; i++) {
-    cell[i].style.background = "";
+  for (let i = 0; i < cells.length; i++) {
+    cells[i].style.background = "";
   }
 })
 
@@ -45,7 +45,7 @@ sizeButton.addEventListener("click", function (e) {
 
 // Function to create the grid
 function CreateGrid(size) {
-  let cellSize = (1000 / size);
+  let cellSize = (500 / size) - 2;
   for (i = 1; i <= size; i++) {
     for (j = 1; j <= size; j++) {
       const cell = document.createElement('div');
@@ -68,8 +68,8 @@ function DeleteGrid(size) {
 
 // Function to fill in the cells
 function FillCells() {
-  for (let i = 0; i < cell.length; i++) {
-    cell[i].addEventListener("mouseover", function(e) {
+  for (let i = 0; i < cells.length; i++) {
+    cells[i].addEventListener("mouseover", function(e) {
       e.target.style.background = "purple";
     }) 
   }
